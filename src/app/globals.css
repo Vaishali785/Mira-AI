@@ -1,0 +1,271 @@
+@import "tailwindcss";
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	min-height: 100%;
+}
+
+body {
+	min-height: 100vh;
+	background: #080808;
+	color: #f2eee8;
+}
+
+button,
+input {
+	font: inherit;
+}
+
+.no-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.mira-page {
+	font-family: system-ui, sans-serif;
+	font-size: 13px;
+	background:
+		radial-gradient(
+			ellipse 78% 92% at 4% 96%,
+			rgba(255, 31, 90, 0.18) 0%,
+			transparent 58%
+		),
+		radial-gradient(
+			ellipse 52% 58% at 18% 12%,
+			rgba(255, 31, 90, 0.12) 0%,
+			transparent 60%
+		),
+		radial-gradient(
+			ellipse 62% 68% at 80% 42%,
+			rgba(255, 31, 90, 0.1) 0%,
+			transparent 54%
+		),
+		radial-gradient(
+			ellipse 54% 66% at 92% 10%,
+			rgba(255, 255, 255, 0.08) 0%,
+			transparent 54%
+		),
+		radial-gradient(
+			ellipse 42% 50% at 56% 18%,
+			rgba(255, 255, 255, 0.05) 0%,
+			transparent 58%
+		),
+		radial-gradient(
+			ellipse 58% 62% at 82% 84%,
+			rgba(255, 31, 90, 0.1) 0%,
+			transparent 60%
+		),
+		var(--bg, #080808);
+}
+
+.mira-page[data-light="true"] {
+	background:
+		radial-gradient(
+			ellipse 82% 96% at 4% 98%,
+			rgba(214, 48, 88, 0.08) 0%,
+			transparent 58%
+		),
+		radial-gradient(
+			ellipse 54% 62% at 88% 8%,
+			rgba(248, 245, 242, 0.26) 0%,
+			transparent 50%
+		),
+		radial-gradient(
+			ellipse 46% 54% at 52% 16%,
+			rgba(243, 239, 235, 0.18) 0%,
+			transparent 58%
+		),
+		radial-gradient(
+			ellipse 36% 42% at 86% 84%,
+			rgba(214, 48, 88, 0.06) 0%,
+			transparent 60%
+		),
+		radial-gradient(
+			ellipse 42% 48% at 74% 70%,
+			rgba(240, 235, 231, 0.12) 0%,
+			transparent 58%
+		),
+		var(--bg);
+}
+
+.mira-eyebrow {
+	font-size: 9px;
+	color: var(--tx3);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.09em;
+}
+
+.mira-card,
+.mira-skill-card,
+.mira-entry-card {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid transparent;
+	transition:
+		border-color 0.2s,
+		box-shadow 0.2s,
+		background 0.35s;
+}
+
+.mira-card,
+.mira-entry-card {
+	border-radius: 12px;
+	background:
+		radial-gradient(
+			ellipse 90% 90% at 10% 90%,
+			var(--rose-dim) 0%,
+			transparent 60%
+		),
+		radial-gradient(
+			ellipse 55% 55% at 88% 12%,
+			rgba(255, 255, 255, 0.04) 0%,
+			transparent 55%
+		),
+		var(--card);
+}
+
+.mira-skill-card {
+	background:
+		radial-gradient(
+			ellipse 90% 90% at 5% 95%,
+			var(--rose-dim) 0%,
+			transparent 55%
+		),
+		var(--card);
+	border-color: var(--bdr);
+}
+
+.mira-page[data-light="true"] .mira-card,
+.mira-page[data-light="true"] .mira-entry-card {
+	background:
+		radial-gradient(
+			ellipse 90% 90% at 10% 90%,
+			var(--rose-dim) 0%,
+			transparent 60%
+		),
+		radial-gradient(
+			ellipse 55% 55% at 88% 12%,
+			rgba(248, 244, 240, 0.28) 0%,
+			transparent 55%
+		),
+		var(--card);
+}
+
+.mira-page[data-light="true"] .mira-skill-card {
+	background:
+		radial-gradient(
+			ellipse 90% 90% at 5% 95%,
+			var(--rose-dim) 0%,
+			transparent 55%
+		),
+		var(--card);
+}
+
+.mira-card:hover,
+.mira-skill-card:hover,
+.mira-entry-card:hover {
+	border-color: var(--bdr2);
+	box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+}
+
+.mira-card:hover,
+.mira-entry-card:hover {
+	background:
+		radial-gradient(
+			ellipse 110% 110% at 10% 90%,
+			var(--rose-glow) 0%,
+			transparent 60%
+		),
+		radial-gradient(
+			ellipse 65% 65% at 88% 12%,
+			rgba(255, 255, 255, 0.07) 0%,
+			transparent 55%
+		),
+		var(--card);
+}
+
+.mira-skill-card:hover {
+	background:
+		radial-gradient(
+			ellipse 110% 110% at 5% 95%,
+			var(--rose-glow) 0%,
+			transparent 55%
+		),
+		var(--card);
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
+.mira-page[data-light="true"] .mira-card:hover,
+.mira-page[data-light="true"] .mira-entry-card:hover {
+	box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+	background:
+		radial-gradient(
+			ellipse 110% 110% at 10% 90%,
+			var(--rose-glow) 0%,
+			transparent 60%
+		),
+		radial-gradient(
+			ellipse 65% 65% at 88% 12%,
+			rgba(255, 246, 241, 0.6) 0%,
+			transparent 55%
+		),
+		var(--card);
+}
+
+.mira-page[data-light="true"] .mira-skill-card:hover {
+	box-shadow: 0 2px 16px rgba(0, 0, 0, 0.09);
+}
+
+.mira-skill-tag {
+	border-radius: 999px;
+	padding: 1px 6px;
+	font-size: 9px;
+	font-weight: 700;
+}
+
+.mira-skill-tag.active {
+	background: rgba(255, 31, 90, 0.12);
+	color: var(--rose);
+}
+
+.mira-skill-tag.done {
+	background: rgba(80, 180, 120, 0.15);
+	color: #50b478;
+}
+
+.mira-skill-tag.paused {
+	background: rgba(180, 140, 80, 0.15);
+	color: #b48c50;
+}
+
+.mira-check {
+	display: flex;
+	width: 13px;
+	height: 13px;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	border-radius: 3px;
+	border: 1.5px solid var(--bdr2);
+}
+
+.mira-check.is-done {
+	border-color: var(--rose);
+	background: var(--rose-dim);
+}
+
+@media (max-width: 1279px) {
+	.mira-page {
+		padding-bottom: 24px;
+	}
+}
