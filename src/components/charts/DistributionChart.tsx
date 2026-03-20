@@ -5,7 +5,7 @@ export function DistributionChart() {
     <article className="mira-card flex h-full min-h-[170px] flex-col p-[13px]">
       <div className="mira-eyebrow">Distribution</div>
       <div className="mb-[10px] mt-[2px] text-[14px] font-bold">Skill Focus</div>
-      <div className="flex flex-1 items-center gap-2">
+      <div className="flex flex-1 flex-col items-start gap-3 sm:flex-row sm:items-center">
         <svg width="90" height="90" viewBox="0 0 90 90" className="shrink-0">
           <circle cx="45" cy="45" r="32" fill="none" stroke="currentColor" strokeOpacity="0.07" strokeWidth="11" />
           <circle cx="45" cy="45" r="32" fill="none" stroke="#FF1F5A" strokeWidth="11" strokeDasharray="80 121" strokeDashoffset="0" strokeLinecap="round" transform="rotate(-90 45 45)" />
@@ -16,7 +16,7 @@ export function DistributionChart() {
           <text x="45" y="52" textAnchor="middle" fontSize="7" fill="currentColor" fillOpacity="0.4" fontFamily="monospace" letterSpacing="1">SKILLS</text>
         </svg>
 
-        <div className="flex-1">
+        <div className="w-full flex-1">
           {focusSlices.map((slice) => (
             <div key={slice.label} className="mb-[5px] flex items-center gap-[5px] text-[10px]">
               <span className="h-[6px] w-[6px] shrink-0 rounded-full" style={{ background: slice.color }} />

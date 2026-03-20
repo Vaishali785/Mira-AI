@@ -10,7 +10,7 @@ export function EntryListCard() {
         </div>
 
         {journalEntries.map((entry) => (
-          <div key={entry.title} className="flex gap-[7px] border-b border-[var(--bdr)] py-[7px] last:border-b-0">
+          <div key={entry.title} className="flex gap-[7px] border-b border-[var(--bdr)] py-[7px] transition-colors duration-200 last:border-b-0 hover:border-[var(--bdr2)]">
             <div className="mt-1 h-[5px] w-[5px] shrink-0 rounded-full" style={{ background: entry.dot }} />
             <div>
               <div className="text-[11px] leading-[1.4] text-[var(--tx)]">{entry.title}</div>
@@ -24,7 +24,7 @@ export function EntryListCard() {
           </div>
         ))}
 
-        <button type="button" className="mt-2 w-full rounded-[8px] border border-dashed border-[var(--bdr2)] bg-[var(--card2)] px-3 py-[7px] text-[11px] text-[var(--tx3)] transition-colors hover:bg-[color-mix(in_srgb,var(--card2),var(--tx)_4%)]">
+        <button type="button" className="mt-2 w-full rounded-[8px] border border-dashed border-[var(--bdr2)] bg-[var(--card2)] px-3 py-[7px] text-[11px] text-[var(--tx3)] transition-all duration-200 hover:border-[var(--rose)] hover:bg-[color-mix(in_srgb,var(--card2),var(--tx)_4%)] hover:text-[var(--tx2)]">
           + Add entry
         </button>
       </div>

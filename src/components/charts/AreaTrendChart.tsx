@@ -1,7 +1,7 @@
 export function AreaTrendChart() {
   return (
     <article className="mira-card min-h-[208px] p-[13px] xl:col-start-3 xl:[grid-row:1/3]">
-      <div className="mb-2 flex items-start justify-between">
+      <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="mira-eyebrow">Learning Hours</div>
           <div className="mt-[2px] text-[14px] font-bold">Daily Activity</div>

@@ -19,7 +19,7 @@ function CheckIcon({ done }: { done: boolean }) {
 
 export function SkillCard({ skill }: { skill: SkillCardType }) {
     return (
-        <article className="mira-skill-card min-h-[228px] rounded-[12px] p-[14px]">
+        <article className="mira-skill-card min-h-[200px] rounded-[12px] p-[12px] sm:min-h-[214px] sm:p-[13px] lg:min-h-[228px] lg:p-[14px]">
             <div className="mb-[10px] flex items-start justify-between gap-2 text-[14px] font-bold">
                 <span className="leading-[1.35] tracking-[-0.01em]">{skill.name}</span>
                 <StatusTag status={skill.status} />
@@ -33,7 +33,7 @@ export function SkillCard({ skill }: { skill: SkillCardType }) {
                 {skill.lessons.map((lesson) => (
                     <div key={lesson.label} className="flex items-center gap-[6px]">
                         <CheckIcon done={lesson.done} />
-                        <span className={`text-[13px] leading-[1.35] ${lesson.done ? "text-[var(--tx3)] line-through" : "text-[var(--tx2)]"}`}>{lesson.label}</span>
+                        <span className={`text-[12px] leading-[1.35] sm:text-[13px] ${lesson.done ? "text-[var(--tx3)] line-through" : "text-[var(--tx2)]"}`}>{lesson.label}</span>
                     </div>
                 ))}
             </div>
