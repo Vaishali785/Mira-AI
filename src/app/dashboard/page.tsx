@@ -5,6 +5,7 @@ import { StatCard } from "@/components/cards/StatCard";
 import { ActivityHeatmap } from "@/components/charts/ActivityHeatmap";
 import { AreaTrendChart } from "@/components/charts/AreaTrendChart";
 import { DistributionChart } from "@/components/charts/DistributionChart";
+import { AppFooter } from "@/components/layout/AppFooter";
 import { AppHeader } from "@/components/layout/AppHeader";
 import { GreetingBanner } from "@/components/layout/GreetingBanner";
 import { PageShell } from "@/components/layout/PageShell";
@@ -77,6 +78,7 @@ export default function DashboardPage() {
                     <EntryListCard />
                 </div>
             </section>
+            <AppFooter />
         </PageShell>
     );
 }
