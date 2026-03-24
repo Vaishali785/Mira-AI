@@ -123,3 +123,6 @@ types/
 
 Built by Vaishali
 Frontend Engineer • Building in public 🚀
+
+<!-- Branches -->
+<!-- main - static pages with pages - dashboard and skill detail - no popups -->
