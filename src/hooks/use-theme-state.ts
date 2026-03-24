@@ -5,9 +5,9 @@ import { dashboardTabs } from "@/data/mock-data";
 import { createHeatmapCells, getDashboardTheme } from "@/lib/theme-utils";
 import { DashboardTab } from "@/types/app-types";
 
-export const useThemeState = () => {
+export const useThemeState = (initialTab: DashboardTab = dashboardTabs[0]) => {
   const [isLight, setIsLight] = useState(false);
-  const [activeTab, setActiveTab] = useState<DashboardTab>(dashboardTabs[0]);
+  const [activeTab, setActiveTab] = useState<DashboardTab>(initialTab);
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const theme = useMemo(() => getDashboardTheme(isLight), [isLight]);

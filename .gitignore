@@ -19,7 +19,7 @@
 .env.production.local
 .firebase
 .env
-
+.next
 
 npm-debug.log*
 yarn-debug.log*
