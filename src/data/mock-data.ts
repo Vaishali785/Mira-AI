@@ -1,4 +1,5 @@
-import { DashboardTab, Entry, FocusSlice, Kpi, SkillCard } from "@/types/app-types";
+import { machineLearningTopics } from "@/data/skill-detail-data";
+import { DashboardTab, Entry, FocusSlice, Kpi, Skill } from "@/types/app-types";
 
 export const dashboardTabs: DashboardTab[] = ["Overview", "Skills", "Analytics", "Posts", "Settings"];
 
@@ -9,53 +10,56 @@ export const dashboardKpis: Kpi[] = [
     { label: "Posts Made", value: "34", sub: "All time", icon: "post" }
 ];
 
-export const skillCards: SkillCard[] = [
+export const skills: Skill[] = [
     {
+        skillId: 1,
+        createdOn: "Nov 12, 2024",
         name: "Machine Learning",
         status: "Active",
         progress: 65,
         gradient: "linear-gradient(90deg,var(--rose),var(--rose))",
-        lessons: [
-            { label: "Linear Regression", done: true },
-            { label: "Feature Engineering", done: true },
-            { label: "Model Evaluation", done: false },
-            { label: "Deployment", done: false }
-        ]
+        topics: machineLearningTopics
     },
     {
+        skillId: 2,
+        createdOn: "Oct 8, 2024",
         name: "TypeScript",
         status: "Active",
         progress: 80,
         gradient: "linear-gradient(90deg,var(--rose),#FF7BAA)",
-        lessons: [
-            { label: "Type System", done: true },
-            { label: "Generics", done: true },
-            { label: "Utility Types", done: true },
-            { label: "Advanced Patterns", done: false }
+        topics: [
+            { id: 1, name: "Type System", done: true },
+            { id: 2, name: "Generics", done: true },
+            { id: 3, name: "Utility Types", done: true },
+            { id: 4, name: "Advanced Patterns", done: false }
         ]
     },
     {
+        skillId: 3,
+        createdOn: "Sep 1, 2024",
         name: "Next.js",
         status: "Done",
         progress: 92,
         gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
-        lessons: [
-            { label: "App Router", done: true },
-            { label: "Server Components", done: true },
-            { label: "API Routes", done: true },
-            { label: "Deployment", done: true }
+        topics: [
+            { id: 1, name: "App Router", done: true },
+            { id: 2, name: "Server Components", done: true },
+            { id: 3, name: "API Routes", done: true },
+            { id: 4, name: "Deployment", done: true }
         ]
     },
     {
+        skillId: 4,
+        createdOn: "Dec 3, 2024",
         name: "AI",
         status: "Active",
         progress: 50,
         gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
-        lessons: [
-            { label: "LLM / Transformer", done: true },
-            { label: "Embeddings", done: true },
-            { label: "RAG", done: false },
-            { label: "Deployment", done: false }
+        topics: [
+            { id: 1, name: "LLM / Transformer", done: true },
+            { id: 2, name: "Embeddings", done: true },
+            { id: 3, name: "RAG", done: false },
+            { id: 4, name: "Deployment", done: false }
         ]
     }
 ];

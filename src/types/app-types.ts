@@ -11,17 +11,52 @@ export type Kpi = {
     icon: KpiIcon;
 };
 
-export type SkillLesson = {
+export type SkillTopicAsset = {
     label: string;
+    url: string;
+};
+
+export type SkillTopicPreview = {
+    id: number;
+    name: string;
     done: boolean;
 };
 
-export type SkillCard = {
+export type PostTone = "Educational" | "Reflective" | "Bold";
+
+export type PostFormat = "X Post" | "X Thread" | "LinkedIn Post";
+
+export type Post = {
+    id: number;
+    skillName: string;
+    skillId: number;
+    topicName: string;
+    topicId: number;
+    createdOn: string;
+    tone: PostTone;
+    format: PostFormat;
+    userEntry?: string;
+};
+
+export type SkillTopic = {
+    id: number;
+    skillId: number;
+    done: boolean;
+    name: string;
+    finishedOn: string | null;
+    asset: SkillTopicAsset | null;
+    postIds: number[];
+    userEntry?: string;
+};
+
+export type Skill = {
+    skillId: number;
+    createdOn: string;
     name: string;
     status: "Active" | "Done" | "Paused";
     progress: number;
     gradient: string;
-    lessons: SkillLesson[];
+    topics: SkillTopicPreview[];
 };
 
 export type Entry = {
