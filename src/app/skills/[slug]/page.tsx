@@ -76,7 +76,7 @@ export default function SkillDetailPage() {
             onToggleTheme={toggleTheme}
         >
             <SkillDetailHeader completedCount={completedCount} progressPct={progressPct} />
-            <div className="px-3 pb-16 sm:px-5">
+            <div className="px-0 pb-16 sm:px-5">
                 <SkillTopicsTable isLight={isLight} topics={topics} onOpenPost={setSelectedTopicId} onToggleTopic={toggleTopic} />
             </div>
             <SkillPostDialog copied={copied} topic={selectedTopic} onClose={() => setSelectedTopicId(null)} onCopy={handleCopy} />
