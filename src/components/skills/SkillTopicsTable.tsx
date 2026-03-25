@@ -1,4 +1,4 @@
-import { SkillTopic } from "@/data/skill-detail-data";
+import { SkillTopic } from "@/types/app-types";
 
 type SkillTopicsTableProps = {
     isLight: boolean;
@@ -50,7 +50,7 @@ export function SkillTopicsTable({ isLight, topics, onOpenPost, onToggleTopic }:
                                     <span className={`whitespace-nowrap text-[13px] font-medium ${topic.done ? "text-(--tx3) line-through" : "text-(--tx)"}`}>{topic.name}</span>
                                 </td>
                                 <td className="px-[14px] py-3 align-middle">
-                                    <span className={`font-mono text-[11px] whitespace-nowrap ${topic.done ? "text-(--tx2)" : "text-(--tx3)"}`}>{topic.date ?? "—"}</span>
+                                    <span className={`font-mono text-[11px] whitespace-nowrap ${topic.done ? "text-(--tx2)" : "text-(--tx3)"}`}>{topic.finishedOn ?? "—"}</span>
                                 </td>
                                 <td className="px-[14px] py-3 align-middle">
                                     {topic.done && topic.asset ? (
@@ -67,7 +67,7 @@ export function SkillTopicsTable({ isLight, topics, onOpenPost, onToggleTopic }:
                                     )}
                                 </td>
                                 <td className="px-[14px] py-3 text-center align-middle">
-                                    {topic.done && topic.post ? (
+                                    {topic.done && topic.postIds.length > 0 ? (
                                         <button type="button" onClick={() => onOpenPost(topic.id)} className="inline-flex items-center gap-1 rounded-[6px] border border-(--rose-dim) bg-(--rose-dim) px-[10px] py-1 text-[11px] font-semibold text-(--rose) transition-colors hover:border-[color-mix(in_srgb,var(--rose),transparent_70%)] hover:bg-(--rose-glow)">
                                             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                                                 <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
