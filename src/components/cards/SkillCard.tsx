@@ -17,7 +17,12 @@ function CheckIcon({ done }: { done: boolean }) {
     );
 }
 
-export function SkillCard({ skill }: { skill: SkillCardType }) {
+type SkillCardProps = {
+    skill: SkillCardType;
+    onToggleLesson?: (lessonIndex: number) => void;
+};
+
+export function SkillCard({ skill, onToggleLesson }: SkillCardProps) {
     return (
         <article className="mira-skill-card min-h-[200px] rounded-[12px] p-[12px] sm:min-h-[214px] sm:p-[13px] lg:min-h-[228px] lg:p-[14px]">
             <div className="mb-[10px] flex items-start justify-between gap-2 text-[14px] font-bold">
@@ -30,9 +35,16 @@ export function SkillCard({ skill }: { skill: SkillCardType }) {
             </div>
 
             <div className="space-y-[8px]">
-                {skill.lessons.map((lesson) => (
+                {skill.lessons.map((lesson, lessonIndex) => (
                     <div key={lesson.label} className="flex items-center gap-[6px]">
-                        <CheckIcon done={lesson.done} />
+                        <button
+                            type="button"
+                            onClick={() => onToggleLesson?.(lessonIndex)}
+                            className="cursor-pointer"
+                            aria-label={lesson.done ? `Mark ${lesson.label} incomplete` : `Mark ${lesson.label} complete`}
+                        >
+                            <CheckIcon done={lesson.done} />
+                        </button>
                         <span className={`text-[12px] leading-[1.35] sm:text-[13px] ${lesson.done ? "text-[var(--tx3)] line-through" : "text-[var(--tx2)]"}`}>{lesson.label}</span>
                     </div>
                 ))}
