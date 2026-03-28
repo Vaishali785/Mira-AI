@@ -1,6 +1,6 @@
-import { SkillCard as SkillCardType } from "@/types/app-types";
+import { Skill as SkillType } from "@/types/app-types";
 
-function StatusTag({ status }: { status: SkillCardType["status"] }) {
+function StatusTag({ status }: { status: SkillType["status"] }) {
     const className = status === "Done" ? "mira-skill-tag done" : status === "Paused" ? "mira-skill-tag paused" : "mira-skill-tag active";
     return <span className={className}>{status}</span>;
 }
@@ -17,12 +17,16 @@ function CheckIcon({ done }: { done: boolean }) {
     );
 }
 
+<<<<<<< HEAD
 type SkillCardProps = {
     skill: SkillCardType;
     onToggleLesson?: (lessonIndex: number) => void;
 };
 
 export function SkillCard({ skill, onToggleLesson }: SkillCardProps) {
+=======
+export function SkillCard({ skill }: { skill: SkillType }) {
+>>>>>>> data-formatting
     return (
         <article className="mira-skill-card min-h-[200px] rounded-[12px] p-[12px] sm:min-h-[214px] sm:p-[13px] lg:min-h-[228px] lg:p-[14px]">
             <div className="mb-[10px] flex items-start justify-between gap-2 text-[14px] font-bold">
@@ -35,6 +39,7 @@ export function SkillCard({ skill, onToggleLesson }: SkillCardProps) {
             </div>
 
             <div className="space-y-[8px]">
+<<<<<<< HEAD
                 {skill.lessons.map((lesson, lessonIndex) => (
                     <div key={lesson.label} className="flex items-center gap-[6px]">
                         <button
@@ -46,6 +51,12 @@ export function SkillCard({ skill, onToggleLesson }: SkillCardProps) {
                             <CheckIcon done={lesson.done} />
                         </button>
                         <span className={`text-[12px] leading-[1.35] sm:text-[13px] ${lesson.done ? "text-[var(--tx3)] line-through" : "text-[var(--tx2)]"}`}>{lesson.label}</span>
+=======
+                {skill.topics.map((topic) => (
+                    <div key={`${skill.skillId}-${topic.id}`} className="flex items-center gap-[6px]">
+                        <CheckIcon done={topic.done} />
+                        <span className={`text-[12px] leading-[1.35] sm:text-[13px] ${topic.done ? "text-(--tx3) line-through" : "text-(--tx2)"}`}>{topic.name}</span>
+>>>>>>> data-formatting
                     </div>
                 ))}
             </div>
