@@ -12,7 +12,15 @@ export const getDashboardTheme = (isLight: boolean): CSSProperties =>
         "--tx3": isLight ? "#8B847F" : "#8A827D",
         "--rose": isLight ? "#D63058" : "#FF1F5A",
         "--rose-dim": isLight ? "rgba(214,48,88,0.07)" : "rgba(255,31,90,0.10)",
-        "--rose-glow": isLight ? "rgba(214,48,88,0.12)" : "rgba(255,31,90,0.16)"
+        "--rose-glow": isLight ? "rgba(214,48,88,0.12)" : "rgba(255,31,90,0.16)",
+        "--icon-chip": isLight ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.07)",
+        "--topics-table-glow": isLight ? "rgba(248,244,240,0.3)" : "rgba(255,255,255,0.03)",
+        "--topics-table-row-hover": isLight ? "rgba(0,0,0,0.025)" : "rgba(255,255,255,0.025)",
+        "--heat-0": isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.06)",
+        "--heat-1": "rgba(255,31,90,0.22)",
+        "--heat-2": "rgba(255,31,90,0.46)",
+        "--heat-3": "rgba(255,31,90,0.74)",
+        "--heat-4": "rgba(255,31,90,1)"
     }) as CSSProperties;
 
 const seededRandom = (seed: number) => {
@@ -20,16 +28,9 @@ const seededRandom = (seed: number) => {
     return value - Math.floor(value);
 };
 
-const heatColor = (level: number, isLight: boolean) => {
-    if (level === 0) {
-        return isLight ? "rgba(0,0,0,0.07)" : "rgba(255,255,255,0.06)";
-    }
+const heatColor = (level: number) => `var(--heat-${level})`;
 
-    const alpha = [0, 0.22, 0.46, 0.74, 1][level];
-    return `rgba(255,31,90,${alpha})`;
-};
-
-export const createHeatmapCells = (isLight: boolean) =>
+export const createHeatmapCells = () =>
     Array.from({ length: 5 * 30 }, (_, index) => {
         const row = Math.floor(index / 30);
         const col = index % 30;
@@ -39,6 +40,6 @@ export const createHeatmapCells = (isLight: boolean) =>
         return {
             id: `${row}-${col}`,
             title: level === 0 ? "No sessions" : `${level * 2} sessions`,
-            background: heatColor(level, isLight)
+            background: heatColor(level)
         };
     });

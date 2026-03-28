@@ -27,15 +27,14 @@ const iconMap = {
 
 type StatCardProps = {
   stat: Kpi;
-  isLight: boolean;
 };
 
-export function StatCard({ stat, isLight }: StatCardProps) {
+export function StatCard({ stat }: StatCardProps) {
   return (
     <article className="mira-card h-full min-h-[100px] cursor-default p-[13px] hover:-translate-y-[1px]">
       <div className="mb-[6px] flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.09em] text-[var(--tx3)]">
         <span>{stat.label}</span>
-        <div className="grid h-[22px] w-[22px] place-items-center rounded-[6px]" style={{ background: isLight ? "rgba(0,0,0,0.06)" : "rgba(255,255,255,0.07)" }}>
+        <div className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[var(--icon-chip)]">
           {iconMap[stat.icon]}
         </div>
       </div>
