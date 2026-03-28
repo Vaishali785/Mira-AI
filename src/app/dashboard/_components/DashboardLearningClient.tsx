@@ -2,7 +2,7 @@
 
 import { EntryListCard } from "@/components/cards/EntryListCard"
 import { AddEntryDialog } from "@/components/popups/AddEntryDialog"
-import { skillCards } from "@/data/mock-data"
+import { skills as skillCards } from "@/data/mock-data"
 import { useAddEntryDialog } from "@/hooks/use-add-entry-dialog"
 import { useTopicCompletionToggle } from "@/hooks/use-topic-completion-toggle"
 import { useState } from "react"
@@ -12,37 +12,37 @@ export function DashboardLearningClient() {
 	const addEntryDialog = useAddEntryDialog()
 	const [skills, setSkills] = useState(skillCards)
 
-	const { toggleTopic: toggleLesson } = useTopicCompletionToggle<{ skillName: string; lessonIndex: number }>({
-		getContext: ({ skillName, lessonIndex }) => {
+	const { toggleTopic: toggleTopic } = useTopicCompletionToggle<{ skillName: string; topicIndex: number }>({
+		getContext: ({ skillName, topicIndex }) => {
 			const selectedSkill = skills.find((skill) => skill.name === skillName)
-			const selectedLesson = selectedSkill?.lessons[lessonIndex]
+			const selectedTopic = selectedSkill?.topics[topicIndex]
 
 			return {
-				exists: Boolean(selectedSkill && selectedLesson),
-				done: selectedLesson?.done ?? false,
+				exists: Boolean(selectedSkill && selectedTopic),
+				done: selectedTopic?.done ?? false,
 				skillLabel: skillName,
-				topicLabel: selectedLesson?.label ?? "",
+				topicLabel: selectedTopic?.name ?? "",
 			}
 		},
-		onMarkIncomplete: ({ skillName, lessonIndex }) => {
+		onMarkIncomplete: ({ skillName, topicIndex }) => {
 			setSkills((current) =>
 				current.map((skill) =>
 					skill.name === skillName
 						? {
 								...skill,
-								lessons: skill.lessons.map((lesson, index) => (index === lessonIndex ? { ...lesson, done: false } : lesson)),
+								topics: skill.topics.map((topic, index) => (index === topicIndex ? { ...topic, done: false } : topic)),
 							}
 						: skill,
 				),
 			)
 		},
-		onMarkComplete: ({ skillName, lessonIndex }) => {
+		onMarkComplete: ({ skillName, topicIndex }) => {
 			setSkills((current) =>
 				current.map((skill) =>
 					skill.name === skillName
 						? {
 								...skill,
-								lessons: skill.lessons.map((lesson, index) => (index === lessonIndex ? { ...lesson, done: true } : lesson)),
+								topics: skill.topics.map((topic, index) => (index === topicIndex ? { ...topic, done: true } : topic)),
 							}
 						: skill,
 				),
@@ -54,7 +54,7 @@ export function DashboardLearningClient() {
 	return (
 		<>
 			<div className="min-[900px]:col-span-4 min-[900px]:row-start-3 xl:[grid-column:1/4] xl:row-start-4">
-				<CurriculumSection skills={skills} onToggleTopic={(skillName, lessonIndex) => toggleLesson({ skillName, lessonIndex })} />
+				<CurriculumSection skills={skills} onToggleTopic={(skillName, topicIndex) => toggleTopic({ skillName, topicIndex })} />
 			</div>
 			<div className="min-[900px]:col-span-4 min-[900px]:row-start-4 xl:contents">
 				<EntryListCard onAddEntry={addEntryDialog.open} />

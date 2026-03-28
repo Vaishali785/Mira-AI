@@ -19,7 +19,7 @@ function CheckIcon({ done }: { done: boolean }) {
 
 type SkillCardProps = {
 	skill: SkillType
-	onToggleLesson?: (lessonIndex: number) => void
+	onToggleTopic?: (topicIndex: number) => void
 }
 
 export function SkillCard({ skill, onToggleTopic }: SkillCardProps) {
