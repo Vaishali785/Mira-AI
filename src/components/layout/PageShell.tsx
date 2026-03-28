@@ -1,28 +1,23 @@
-import { AppFooter } from "@/components/layout/AppFooter"
-import { AppHeader } from "@/components/layout/AppHeader"
-import { DashboardTab } from "@/types/app-types"
-import { CSSProperties, PropsWithChildren } from "react"
+"use client";
+
+import { AppFooter } from "@/components/layout/AppFooter";
+import { AppHeader } from "@/components/layout/AppHeader";
+import { useThemeState } from "@/hooks/use-theme-state";
+import { DashboardTab } from "@/types/app-types";
+import { PropsWithChildren } from "react";
 
 type PageShellProps = PropsWithChildren<{
-	isLight: boolean
-	theme: CSSProperties
-	hasScrolled?: boolean
-	activeTab: DashboardTab
-	onTabChange: (tab: DashboardTab) => void
-	onToggleTheme: () => void
-	showFooter?: boolean
-}>
+	initialTab?: DashboardTab;
+	showFooter?: boolean;
+}>;
 
 export function PageShell({
 	children,
-	isLight,
-	theme,
-	hasScrolled = false,
-	activeTab,
-	onTabChange,
-	onToggleTheme,
+	initialTab,
 	showFooter = true,
 }: PageShellProps) {
+	const { activeTab, hasScrolled, isLight, setActiveTab, theme, toggleTheme } = useThemeState(initialTab);
+
 	return (
 		<main
 			className="mira-page min-h-screen w-full px-3 pb-3 pt-0 text-[var(--tx)] transition-[background,color] duration-300 sm:px-5 sm:pb-5 sm:pt-0"
@@ -54,9 +49,9 @@ export function PageShell({
 				>
 					<AppHeader
 						isLight={isLight}
-						onToggleTheme={onToggleTheme}
+						onToggleTheme={toggleTheme}
 						activeTab={activeTab}
-						onTabChange={onTabChange}
+						onTabChange={setActiveTab}
 					/>
 				</div>
 				{children}
