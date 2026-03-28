@@ -1,5 +1,6 @@
-import { SkillTopic } from "@/data/skill-detail-data"
+import { posts } from "@/data/skill-detail-data"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { SkillTopic } from "@/types/app-types"
 
 type SkillPostDialogProps = {
 	topic: SkillTopic | null
@@ -8,6 +9,7 @@ type SkillPostDialogProps = {
 
 export function SkillPostDialog({ topic, onClose }: SkillPostDialogProps) {
 	const { copied, copy } = useCopyToClipboard({ resetKey: topic?.id ?? null })
+	const topicPost = topic?.postIds.length ? (posts.find((post) => post.id === topic.postIds[0]) ?? null) : null
 
 	return (
 		<div
@@ -45,13 +47,13 @@ export function SkillPostDialog({ topic, onClose }: SkillPostDialogProps) {
 						Generated X Post
 					</div>
 					<div className="whitespace-pre-wrap rounded-[10px] border border-(--bdr) bg-(--card2) px-4 py-[14px] text-[13px] leading-[1.7] text-(--tx)">
-						{topic?.post ?? "—"}
+						{topicPost?.userEntry ?? topic?.userEntry ?? "—"}
 					</div>
 					<div className="mt-[14px] flex flex-wrap items-center justify-between gap-2">
-						<span className="font-mono text-[10px] text-(--tx3)">{topic?.postDate ? `Generated ${topic.postDate}` : "—"}</span>
+						<span className="font-mono text-[10px] text-(--tx3)">{topicPost?.createdOn ? `Generated ${topicPost.createdOn}` : "—"}</span>
 						<button
 							type="button"
-							onClick={() => void copy(topic?.post ?? "")}
+							onClick={() => void copy(topicPost?.userEntry ?? topic?.userEntry ?? "")}
 							className={`inline-flex items-center gap-[5px] rounded-[7px] border px-3 py-[5px] text-[11px] font-semibold transition-colors ${copied ? "border-(--rose-dim) bg-(--rose-dim) text-(--rose)" : "border-(--bdr2) bg-(--card2) text-(--tx2) hover:text-(--tx)"}`}
 						>
 							{copied ? (

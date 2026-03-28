@@ -32,13 +32,15 @@ export function SkillDetailInteractiveClient() {
         },
         onMarkIncomplete: (topicId) => {
             setTopics((current) =>
-                current.map((item) => (item.id === topicId ? { ...item, done: false, date: null } : item))
+                current.map((item) => (item.id === topicId ? { ...item, done: false, finishedOn: null } : item))
             );
         },
         onMarkComplete: (topicId) => {
             setTopics((current) =>
                 current.map((item) =>
-                    item.id === topicId ? { ...item, done: true, date: item.date ?? formatShortDate() } : item
+                    item.id === topicId
+                        ? { ...item, done: true, finishedOn: item.finishedOn ?? formatShortDate() }
+                        : item
                 )
             );
         },
