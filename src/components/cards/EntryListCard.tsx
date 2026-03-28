@@ -1,6 +1,11 @@
 import { journalEntries } from "@/data/mock-data";
+import { AddEntryBtn } from "../buttons/AddEntryBtn";
 
-export function EntryListCard() {
+type EntryListCardProps = {
+  onAddEntry?: () => void;
+};
+
+export function EntryListCard({ onAddEntry }: EntryListCardProps) {
   return (
     <section className="xl:col-start-4 xl:[grid-row:1/5]">
       <div className="mira-entry-card min-h-[240px] rounded-[12px] p-[13px]">
@@ -24,9 +29,8 @@ export function EntryListCard() {
           </div>
         ))}
 
-        <button type="button" className="mt-2 w-full rounded-[8px] border border-dashed border-[var(--bdr2)] bg-[var(--card2)] px-3 py-[7px] text-[11px] text-[var(--tx3)] transition-all duration-200 hover:border-[var(--rose)] hover:bg-[color-mix(in_srgb,var(--card2),var(--tx)_4%)] hover:text-[var(--tx2)]">
-          + Add entry
-        </button>
+        <AddEntryBtn onClick={onAddEntry} />
+       
       </div>
     </section>
   );
