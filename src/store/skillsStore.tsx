@@ -10,14 +10,13 @@ type SkillStoreType = {
 
 const useSkillStore = create<SkillStoreType>()((set) => ({
 	skills: skills || [],
-	addSkill: (newSkill) => {
+	addSkill: (newSkill: Skill) => {
 		set((state) => ({ skills: [...state.skills, newSkill] }))
 	},
 }))
 
 export const useSkills = () => useSkillStore((state) => state.skills)
-export const useAddSkill = (newSkill: Skill) =>
-	useSkillStore((state) => state.addSkill(newSkill))
+export const useAddSkill = () => useSkillStore((state) => state.addSkill)
 
 // ===============================
 
@@ -28,11 +27,10 @@ type PostsStoreType = {
 
 const usePostStore = create<PostsStoreType>()((set) => ({
 	posts: posts || [],
-	addPost: (newPost) => {
+	addPost: (newPost: Post) => {
 		set((state) => ({ posts: [...state.posts, newPost] }))
 	},
 }))
 
 export const usePosts = () => usePostStore((state) => state.posts)
-export const useAddPost = (newPost: Post) =>
-	usePostStore((state) => state.addPost(newPost))
+export const useAddPost = () => usePostStore((state) => state.addPost)
