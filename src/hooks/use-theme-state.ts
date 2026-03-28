@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, useMemo, useState } from "react";
 import { dashboardTabs } from "@/data/mock-data";
-import { createHeatmapCells, getDashboardTheme } from "@/lib/theme-utils";
+import { getDashboardTheme } from "@/lib/theme-utils";
 import { DashboardTab } from "@/types/app-types";
 
 export const useThemeState = (initialTab: DashboardTab = dashboardTabs[0]) => {
@@ -11,7 +11,6 @@ export const useThemeState = (initialTab: DashboardTab = dashboardTabs[0]) => {
   const [hasScrolled, setHasScrolled] = useState(false);
 
   const theme = useMemo(() => getDashboardTheme(isLight), [isLight]);
-  const heatmapCells = useMemo(() => createHeatmapCells(isLight), [isLight]);
 
   useLayoutEffect(() => {
     const onScroll = () => setHasScrolled(window.scrollY > 8);
@@ -27,7 +26,6 @@ export const useThemeState = (initialTab: DashboardTab = dashboardTabs[0]) => {
     hasScrolled,
     activeTab,
     theme,
-    heatmapCells,
     setActiveTab,
     toggleTheme: () => setIsLight((current) => !current)
   };

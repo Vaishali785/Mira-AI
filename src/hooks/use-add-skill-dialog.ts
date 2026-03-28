@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
+import { useDialogOverlay } from "@/hooks/use-dialog-overlay"
 
 type DialogStep = 1 | 2 | 3
 type TopicPath = "manual" | "ai" | null
@@ -8,7 +9,7 @@ type TopicPath = "manual" | "ai" | null
 const fallbackAiTopics = ["Foundations & Core Concepts", "Tools & Setup", "Practical Use Cases", "Best Practices", "Projects & Portfolio"]
 
 export const useAddSkillDialog = () => {
-	const [isOpen, setIsOpen] = useState(false)
+	const { isOpen, open: openOverlay, close } = useDialogOverlay()
 	const [step, setStep] = useState<DialogStep>(1)
 	const [skillName, setSkillName] = useState("")
 	const [path, setPath] = useState<TopicPath>(null)
@@ -41,34 +42,8 @@ export const useAddSkillDialog = () => {
 
 	const open = () => {
 		resetDialog()
-		setIsOpen(true)
+		openOverlay()
 	}
-
-	const close = () => {
-		setIsOpen(false)
-	}
-
-	useEffect(() => {
-		if (!isOpen) {
-			document.body.style.overflow = ""
-			return
-		}
-
-		document.body.style.overflow = "hidden"
-
-		const onKeyDown = (event: KeyboardEvent) => {
-			if (event.key === "Escape") {
-				close()
-			}
-		}
-
-		window.addEventListener("keydown", onKeyDown)
-
-		return () => {
-			document.body.style.overflow = ""
-			window.removeEventListener("keydown", onKeyDown)
-		}
-	}, [isOpen])
 
 	const goToStep2 = () => {
 		if (!skillName.trim()) {
@@ -117,8 +92,6 @@ export const useAddSkillDialog = () => {
 			return
 		}
 
-		console.log(">>>>input", topicName)
-
 		setManualTopics((current) => [...current, topicName])
 		setManualTopicInput("")
 	}
@@ -163,20 +136,16 @@ export const useAddSkillDialog = () => {
 			return
 		}
 
-		console.log(">>>>step", step)
 		if (step === 2) {
-			console.log(">>path", path)
 			if (!path) {
 				return
 			}
 
-			console.log(">>>final", manualTopics, skillName)
 			setStep(3)
 
 			return
 		}
 
-		console.log(">>>>before close", step, manualTopics, skillName)
 		close()
 	}
 
