@@ -1,17 +1,17 @@
 export function AreaTrendChart() {
   return (
-    <article className="mira-card min-h-[208px] p-[13px] xl:col-start-3 xl:[grid-row:1/3]">
+    <article className="mira-card min-h-[208px] p-[13px] xl:col-start-3 xl:row-[1/3]">
       <div className="mb-2 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="mira-eyebrow">Learning Hours</div>
           <div className="mt-[2px] text-[14px] font-bold">Daily Activity</div>
         </div>
         <div className="flex items-center gap-[6px]">
-          <div className="flex items-center gap-1 text-[10px] text-[var(--tx3)]">
-            <span className="inline-block h-[6px] w-[6px] rounded-full bg-[var(--rose)]" />
+          <div className="flex items-center gap-1 text-[10px] text-(--tx3)">
+            <span className="inline-block h-[6px] w-[6px] rounded-full bg-(--rose)" />
             hrs
           </div>
-          <div className="rounded-[5px] border border-[var(--bdr)] bg-[var(--card2)] px-[7px] py-[2px] text-[10px] text-[var(--tx3)]">28d</div>
+          <div className="rounded-[5px] border border-(--bdr) bg-(--card2) px-[7px] py-[2px] text-[10px] text-(--tx3)">28d</div>
         </div>
       </div>
       <svg width="100%" viewBox="0 0 360 140" preserveAspectRatio="none" className="block">

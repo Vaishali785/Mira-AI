@@ -28,7 +28,7 @@ export function SkillTopicsTable({ topics, onOpenPost, onToggleTopic }: SkillTop
                     </thead>
                     <tbody>
                         {topics.map((topic) => (
-                            <tr key={topic.id} className="border-b border-(--bdr) transition-colors last:border-b-0 hover:bg-[var(--topics-table-row-hover)]">
+                            <tr key={topic.id} className="border-b border-(--bdr) transition-colors last:border-b-0 hover:bg-(--topics-table-row-hover)">
                                 <td className="px-[14px] py-3 align-middle">
                                     <div className="flex items-center justify-center">
                                         <button

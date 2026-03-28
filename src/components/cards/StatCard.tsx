@@ -31,15 +31,15 @@ type StatCardProps = {
 
 export function StatCard({ stat }: StatCardProps) {
   return (
-    <article className="mira-card h-full min-h-[100px] cursor-default p-[13px] hover:-translate-y-[1px]">
-      <div className="mb-[6px] flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.09em] text-[var(--tx3)]">
+    <article className="mira-card h-full min-h-[100px] cursor-default p-[13px] hover:-translate-y-px">
+      <div className="mb-[6px] flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.09em] text-(--tx3)">
         <span>{stat.label}</span>
-        <div className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-[var(--icon-chip)]">
+        <div className="grid h-[22px] w-[22px] place-items-center rounded-[6px] bg-(--icon-chip)">
           {iconMap[stat.icon]}
         </div>
       </div>
-      <div className="font-[ui-monospace,SFMono-Regular,Menlo,monospace] text-[26px] font-extrabold leading-none tracking-[-0.04em] text-[var(--rose)]">{stat.value}</div>
-      <div className="mt-1 text-[10px] text-[var(--tx3)]">{stat.sub}</div>
+      <div className="font-[ui-monospace,SFMono-Regular,Menlo,monospace] text-[26px] font-extrabold leading-none tracking-[-0.04em] text-(--rose)">{stat.value}</div>
+      <div className="mt-1 text-[10px] text-(--tx3)">{stat.sub}</div>
       <div className="mt-[10px] h-[2px] rounded-full bg-[linear-gradient(90deg,var(--rose),transparent)] opacity-[0.35]" />
     </article>
   );

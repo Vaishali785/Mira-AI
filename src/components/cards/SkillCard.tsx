@@ -30,7 +30,7 @@ export function SkillCard({ skill, onToggleTopic }: SkillCardProps) {
 				<StatusTag status={skill.status} />
 			</div>
 
-			<div className="mb-4 h-[4px] overflow-hidden rounded-full bg-[var(--card2)]">
+			<div className="mb-4 h-[4px] overflow-hidden rounded-full bg-(--card2)">
 				<div className="h-full rounded-full" style={{ width: `${skill.progress}%`, background: skill.gradient }} />
 			</div>
 
@@ -45,7 +45,7 @@ export function SkillCard({ skill, onToggleTopic }: SkillCardProps) {
 						>
 							<CheckIcon done={topic.done} />
 						</button>
-						<span className={`text-[12px] leading-[1.35] sm:text-[13px] ${topic.done ? "text-[var(--tx3)] line-through" : "text-[var(--tx2)]"}`}>
+						<span className={`text-[12px] leading-[1.35] sm:text-[13px] ${topic.done ? "text-(--tx3) line-through" : "text-(--tx2)"}`}>
 							{topic.name}
 						</span>
 					</div>

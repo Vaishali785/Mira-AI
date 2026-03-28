@@ -15,11 +15,11 @@ export function EntryListCard({ onAddEntry }: EntryListCardProps) {
         </div>
 
         {journalEntries.map((entry) => (
-          <div key={entry.title} className="flex gap-[7px] border-b border-[var(--bdr)] py-[7px] transition-colors duration-200 last:border-b-0 hover:border-[var(--bdr2)]">
+          <div key={entry.title} className="flex gap-[7px] border-b border-(--bdr) py-[7px] transition-colors duration-200 last:border-b-0 hover:border-(--bdr2)">
             <div className="mt-1 h-[5px] w-[5px] shrink-0 rounded-full" style={{ background: entry.dot }} />
             <div>
-              <div className="text-[11px] leading-[1.4] text-[var(--tx)]">{entry.title}</div>
-              <div className="mt-[2px] flex items-center gap-1 font-[ui-monospace,SFMono-Regular,Menlo,monospace] text-[10px] text-[var(--tx3)]">
+              <div className="text-[11px] leading-[1.4] text-(--tx)">{entry.title}</div>
+              <div className="mt-[2px] flex items-center gap-1 font-[ui-monospace,SFMono-Regular,Menlo,monospace] text-[10px] text-(--tx3)">
                 {entry.meta}
                 <span className="rounded-[3px] px-1 py-px text-[8px] font-bold" style={entry.tagStyle}>
                   {entry.tag}
