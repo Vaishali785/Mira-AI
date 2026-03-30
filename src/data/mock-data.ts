@@ -64,7 +64,7 @@ export const skills: Skill[] = [
     }
 ];
 
-export const journalEntries: Entry[] = [
+export const entries: Entry[] = [
     {
         title: "Gradient descent & backpropagation",
         meta: "Today · 9:42 PM",
