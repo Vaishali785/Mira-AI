@@ -1,6 +1,6 @@
-import { skills } from "@/data/mock-data"
+import { entries, skills } from "@/data/mock-data"
 import { posts } from "@/data/skill-detail-data"
-import { Post, Skill } from "@/types/app-types"
+import { Entry, Post, Skill } from "@/types/app-types"
 import { create } from "zustand"
 
 type SkillStoreType = {
@@ -34,3 +34,20 @@ const usePostStore = create<PostsStoreType>()((set) => ({
 
 export const usePosts = () => usePostStore((state) => state.posts)
 export const useAddPost = () => usePostStore((state) => state.addPost)
+
+// ===============================
+
+type EntryStoreType = {
+	entries: Entry[]
+	addEntry: (newEntry: Entry) => void
+}
+
+const useEntryStore = create<EntryStoreType>()((set) => ({
+	entries: entries || [],
+	addEntry: (newEntry: Entry) => {
+		set((state) => ({ entries: [newEntry, ...state.entries] }))
+	},
+}))
+
+export const useEntries = () => useEntryStore((state) => state.entries)
+export const useAddEntry = () => useEntryStore((state) => state.addEntry)
