@@ -22,9 +22,9 @@ export type SkillTopicPreview = {
     done: boolean;
 };
 
-export type PostTone = "Educational" | "Reflective" | "Bold";
+export type PostTone = "Educational" | "Casual" | "Professional" | "Storytelling" | "Reflective" | "Bold";
 
-export type PostFormat = "X Post" | "X Thread" | "LinkedIn Post";
+export type PostFormat = "Single Tweet" | "Thread" | "Quick Insight" | "Weekly Summary" | "X Post" | "X Thread" | "LinkedIn Post";
 
 export type Post = {
     id: number;
@@ -35,6 +35,7 @@ export type Post = {
     createdOn: string;
     tone: PostTone;
     format: PostFormat;
+    post?: string;
     userEntry?: string;
 };
 
