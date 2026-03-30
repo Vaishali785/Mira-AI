@@ -5,7 +5,7 @@ import { useAddSkillStepper } from "@/hooks/use-add-skill-stepper"
 import { useAiTopicGenerator } from "@/hooks/use-ai-topic-generator"
 import { useSkillData } from "@/hooks/use-skill-data"
 import { useEffect } from "react"
-import { AddSkillStepper } from "./AddSkillStepper"
+import { AddSkillStepper } from "../sections/AddSkillStepper"
 import { DialogShell } from "./DialogShell"
 
 type AddSkillDialogProps = {
