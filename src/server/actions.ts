@@ -16,7 +16,6 @@ export async function createSkillAction(formData: FormData) {
 	}
 
 	// TODO: persist in DB/store when backend is connected.
-	console.log("[createSkillAction]", { skillName, topics })
 
 	revalidatePath("/dashboard")
 	revalidatePath("/skills")
@@ -36,7 +35,6 @@ export async function createEntryAction(formData: FormData) {
 	}
 
 	// TODO: persist in DB/store when backend is connected.
-	console.log("[createEntryAction]", { skillLabel, topicLabel, userEntry, tone, postStyle })
 
 	revalidatePath("/dashboard")
 	revalidatePath("/skills")
