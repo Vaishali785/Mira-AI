@@ -2,14 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-type UseDialogOverlayOptions = {
+type UseDialogOverlayOptions<TContext> = {
+    onOpen?: () => void;
     onClose?: () => void;
+    onOpenWithContext?: (context: TContext) => void;
 };
 
-export const useDialogOverlay = (options: UseDialogOverlayOptions = {}) => {
+export const useDialogOverlay = <TContext = void>(options: UseDialogOverlayOptions<TContext> = {}) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const open = () => setIsOpen(true);
+    const open = () => {
+        options.onOpen?.();
+        setIsOpen(true);
+    };
+
+    const openWithContext = (context: TContext) => {
+        options.onOpenWithContext?.(context);
+        setIsOpen(true);
+    };
+
     const close = () => {
         setIsOpen(false);
         options.onClose?.();
@@ -37,5 +48,5 @@ export const useDialogOverlay = (options: UseDialogOverlayOptions = {}) => {
         };
     }, [isOpen]);
 
-    return { isOpen, open, close, setIsOpen };
+    return { isOpen, open, openWithContext, close, setIsOpen };
 };
