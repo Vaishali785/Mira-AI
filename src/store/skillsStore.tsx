@@ -6,6 +6,14 @@ import { create } from "zustand"
 type SkillStoreType = {
 	skills: Skill[]
 	addSkill: (newSkill: Skill) => void
+	updateSkillTopic: (params: {
+		skillId: number
+		topicId: number
+		done: boolean
+		finishedOn?: string | null
+		postId?: number | null
+		userEntry?: string
+	}) => void
 }
 
 const useSkillStore = create<SkillStoreType>()((set) => ({
@@ -13,10 +21,33 @@ const useSkillStore = create<SkillStoreType>()((set) => ({
 	addSkill: (newSkill: Skill) => {
 		set((state) => ({ skills: [...state.skills, newSkill] }))
 	},
+	updateSkillTopic: ({ skillId, topicId, done, finishedOn, postId, userEntry }) => {
+		set((state) => ({
+			skills: state.skills.map((skill) =>
+				skill.skillId === skillId
+					? {
+							...skill,
+							topics: skill.topics.map((topic) =>
+								topic.id === topicId
+									? {
+											...topic,
+											done,
+											finishedOn: finishedOn !== undefined ? finishedOn : topic.finishedOn,
+											postId: postId !== undefined ? postId : topic.postId,
+											userEntry: userEntry !== undefined ? userEntry : topic.userEntry,
+										}
+									: topic,
+							),
+						}
+					: skill,
+			),
+		}))
+	},
 }))
 
 export const useSkills = () => useSkillStore((state) => state.skills)
 export const useAddSkill = () => useSkillStore((state) => state.addSkill)
+export const useUpdateSkillTopic = () => useSkillStore((state) => state.updateSkillTopic)
 
 // ===============================
 
