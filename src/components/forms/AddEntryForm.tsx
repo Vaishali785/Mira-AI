@@ -42,7 +42,6 @@ export function AddEntryForm({ dialog }: AddEntryFormProps) {
 		lockedSkillLabel,
 		lockedTopicLabel,
 		entryData,
-		// skills,
 		topicOptions,
 		tones,
 		format,

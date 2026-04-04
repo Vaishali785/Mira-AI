@@ -1,6 +1,6 @@
 "use client"
 
-import { AddEntrySubmitPayload, useAddEntryFormData } from "@/hooks/use-add-entry-form-data"
+import { useAddEntryFormData } from "@/hooks/use-add-entry-form-data"
 import { useDialogOverlay } from "@/hooks/use-dialog-overlay"
 import { buildLearningPost, formatShortDate } from "@/lib/general-utils"
 import { useAddEntry, useAddPost, usePosts, useSkills, useUpdateSkillTopic } from "@/store/skillsStore"
@@ -94,5 +94,3 @@ export function useAddEntryDialog() {
 		...form,
 	}
 }
-
-export type { AddEntrySubmitPayload }

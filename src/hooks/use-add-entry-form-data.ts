@@ -3,21 +3,6 @@
 import { entrySkills } from "@/data/mock-data"
 import { useMemo, useState } from "react"
 
-// type EntrySkill = {
-// 	id: string
-// 	label: string
-// 	topics: Array<{ id: string; label: string }>
-// }
-
-// const entrySkills: EntrySkill[] = availableSkills.map((skill) => ({
-// 	id: String(skill.skillId),
-// 	label: skill.name,
-// 	topics: skill.topics.map((topic) => ({
-// 		id: String(topic.id),
-// 		label: topic.name,
-// 	})),
-// }))
-
 const tones = ["Educational", "Casual", "Professional", "Storytelling", "Reflective"] as const
 const format = ["Single Tweet", "Thread", "Quick Insight", "Weekly Summary"] as const
 
