@@ -1,5 +1,5 @@
-import { posts } from "@/data/skill-detail-data"
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard"
+import { usePosts } from "@/store/skillsStore"
 import { SkillTopic } from "@/types/app-types"
 
 type SkillPostDialogProps = {
@@ -8,8 +8,10 @@ type SkillPostDialogProps = {
 }
 
 export function SkillPostDialog({ topic, onClose }: SkillPostDialogProps) {
+	const posts = usePosts()
 	const { copied, copy } = useCopyToClipboard({ resetKey: topic?.id ?? null })
-	const topicPost = topic?.postIds.length ? (posts.find((post) => post.id === topic.postIds[0]) ?? null) : null
+	const topicPost = topic?.postId ? (posts.find((post) => post.id === topic.postId) ?? null) : null
+	const postContent = topicPost?.post ?? ""
 
 	return (
 		<div
@@ -47,14 +49,18 @@ export function SkillPostDialog({ topic, onClose }: SkillPostDialogProps) {
 						Generated X Post
 					</div>
 					<div className="whitespace-pre-wrap rounded-[10px] border border-(--bdr) bg-(--card2) px-4 py-[14px] text-[13px] leading-[1.7] text-(--tx)">
-						{topicPost?.userEntry ?? topic?.userEntry ?? "—"}
+						{postContent || "—"}
 					</div>
 					<div className="mt-[14px] flex flex-wrap items-center justify-between gap-2">
 						<span className="font-mono text-[10px] text-(--tx3)">{topicPost?.createdOn ? `Generated ${topicPost.createdOn}` : "—"}</span>
 						<button
 							type="button"
-							onClick={() => void copy(topicPost?.userEntry ?? topic?.userEntry ?? "")}
-							className={`inline-flex items-center gap-[5px] rounded-[7px] border px-3 py-[5px] text-[11px] font-semibold transition-colors ${copied ? "border-(--rose-dim) bg-(--rose-dim) text-(--rose)" : "border-(--bdr2) bg-(--card2) text-(--tx2) hover:text-(--tx)"}`}
+							onClick={() => void copy(postContent)}
+							className={`inline-flex items-center gap-[5px] rounded-[7px] border px-3 py-[5px] text-[11px] font-semibold transition-colors ${
+								copied
+									? "border-(--rose-dim) bg-(--rose-dim) text-(--rose)"
+									: "border-(--bdr2) bg-(--card2) text-(--tx2) hover:text-(--tx)"
+							}`}
 						>
 							{copied ? (
 								<>
