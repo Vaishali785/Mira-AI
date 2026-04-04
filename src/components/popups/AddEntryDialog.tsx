@@ -1,5 +1,5 @@
 import { AddEntryForm } from "@/components/forms/AddEntryForm"
-import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog-adapter"
+import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog"
 import { DialogShell } from "./DialogShell"
 
 type AddEntryDialogProps = {

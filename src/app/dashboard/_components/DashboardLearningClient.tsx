@@ -2,7 +2,7 @@
 
 import { EntryListCard } from "@/components/cards/EntryListCard"
 import { AddEntryDialog } from "@/components/popups/AddEntryDialog"
-import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog-adapter"
+import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog"
 import { useTopicCompletionToggle } from "@/hooks/use-topic-completion-toggle"
 import { useSkills } from "@/store/skillsStore"
 import { CurriculumSection } from "./CurriculumSection"

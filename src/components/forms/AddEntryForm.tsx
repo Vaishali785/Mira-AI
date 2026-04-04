@@ -1,5 +1,5 @@
 import { entrySkills } from "@/data/mock-data"
-import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog-adapter"
+import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog"
 import { createEntryAction } from "@/server/actions"
 import { ArrowRight, Layers } from "lucide-react"
 

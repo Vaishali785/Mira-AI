@@ -1,7 +1,7 @@
 "use client"
 
 import { AddEntryDialog } from "@/components/popups/AddEntryDialog"
-import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog-adapter"
+import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog"
 import { useDialogOverlay } from "@/hooks/use-dialog-overlay"
 import { useSkills } from "@/store/skillsStore"
 import { useState } from "react"
