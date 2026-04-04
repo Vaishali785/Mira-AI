@@ -23,3 +23,23 @@ export async function createSkillAction(formData: FormData) {
 
 	return
 }
+
+export async function createEntryAction(formData: FormData) {
+	const skillLabel = String(formData.get("skillLabel") ?? "").trim()
+	const topicLabel = String(formData.get("topicLabel") ?? "").trim()
+	const userEntry = String(formData.get("userEntry") ?? "").trim()
+	const tone = String(formData.get("tone") ?? "").trim()
+	const postStyle = String(formData.get("postStyle") ?? "").trim()
+
+	if (!skillLabel || !topicLabel) {
+		return
+	}
+
+	// TODO: persist in DB/store when backend is connected.
+	console.log("[createEntryAction]", { skillLabel, topicLabel, userEntry, tone, postStyle })
+
+	revalidatePath("/dashboard")
+	revalidatePath("/skills")
+
+	return
+}
