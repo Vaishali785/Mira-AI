@@ -3,7 +3,7 @@ import { Skill as SkillCardType } from "@/types/app-types"
 
 type CurriculumSectionProps = {
 	skills: SkillCardType[]
-	onToggleTopic?: (skillName: string, topicIndex: number) => void
+	onToggleTopic?: (skillName: number, topicId: number) => void
 }
 
 export function CurriculumSection({ skills, onToggleTopic }: CurriculumSectionProps) {
@@ -16,7 +16,7 @@ export function CurriculumSection({ skills, onToggleTopic }: CurriculumSectionPr
 
 			<div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4 xl:items-start">
 				{skills.map((skill) => (
-					<SkillCard key={skill.name} skill={skill} onToggleTopic={(topicIndex: number) => onToggleTopic?.(skill.name, topicIndex)} />
+					<SkillCard key={skill.name} skill={skill} onToggleTopic={(topicId: number) => onToggleTopic?.(skill.skillId, topicId)} />
 				))}
 			</div>
 		</section>

@@ -39,7 +39,7 @@ export function SkillCard({ skill, onToggleTopic }: SkillCardProps) {
 					<div key={topic.name} className="flex items-center gap-[6px]">
 						<button
 							type="button"
-							onClick={() => onToggleTopic?.(topicIndex)}
+							onClick={() => onToggleTopic?.(topic?.id)}
 							className="cursor-pointer"
 							aria-label={topic.done ? `Mark ${topic.name} incomplete` : `Mark ${topic.name} complete`}
 						>
