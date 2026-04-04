@@ -46,7 +46,7 @@ export type SkillTopic = {
     name: string;
     finishedOn: string | null;
     asset: SkillTopicAsset | null;
-    postIds: number[];
+    postId: number | null;
     userEntry?: string;
 };
 
@@ -57,7 +57,7 @@ export type Skill = {
     status: "Active" | "Done" | "Paused";
     progress: number;
     gradient: string;
-    topics: SkillTopicPreview[];
+    topics: SkillTopic[];
 };
 
 export type Entry = {
@@ -80,3 +80,9 @@ export type HeatmapCell = {
     title: string;
     background: string;
 };
+
+export type EntrySkill = {
+	id: string
+	label: string
+	topics: Array<{ id: string; label: string }>
+}

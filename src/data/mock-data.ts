@@ -1,5 +1,5 @@
-import { machineLearningTopics } from "@/data/skill-detail-data";
-import { DashboardTab, Entry, FocusSlice, Kpi, Skill } from "@/types/app-types";
+import { aiTopics, machineLearningTopics, nextJsTopics, typeScriptTopics } from "@/data/skill-detail-data";
+import { DashboardTab, Entry, EntrySkill, FocusSlice, Kpi, Skill } from "@/types/app-types";
 
 export const dashboardTabs: DashboardTab[] = ["Overview", "Skills", "Analytics", "Posts", "Settings"];
 
@@ -27,12 +27,7 @@ export const skills: Skill[] = [
         status: "Active",
         progress: 80,
         gradient: "linear-gradient(90deg,var(--rose),#FF7BAA)",
-        topics: [
-            { id: 1, name: "Type System", done: true },
-            { id: 2, name: "Generics", done: true },
-            { id: 3, name: "Utility Types", done: true },
-            { id: 4, name: "Advanced Patterns", done: false }
-        ]
+        topics: typeScriptTopics
     },
     {
         skillId: 3,
@@ -41,12 +36,7 @@ export const skills: Skill[] = [
         status: "Done",
         progress: 92,
         gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
-        topics: [
-            { id: 1, name: "App Router", done: true },
-            { id: 2, name: "Server Components", done: true },
-            { id: 3, name: "API Routes", done: true },
-            { id: 4, name: "Deployment", done: true }
-        ]
+        topics: nextJsTopics
     },
     {
         skillId: 4,
@@ -55,12 +45,7 @@ export const skills: Skill[] = [
         status: "Active",
         progress: 50,
         gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
-        topics: [
-            { id: 1, name: "LLM / Transformer", done: true },
-            { id: 2, name: "Embeddings", done: true },
-            { id: 3, name: "RAG", done: false },
-            { id: 4, name: "Deployment", done: false }
-        ]
+        topics: aiTopics
     }
 ];
 
@@ -94,6 +79,16 @@ export const entries: Entry[] = [
         tagStyle: { background: "rgba(255,207,222,0.15)", color: "#FFB3CC" }
     }
 ];
+
+export const entrySkills: EntrySkill[] = skills.map((skill) => ({
+	id: String(skill.skillId),
+	label: skill.name,
+	topics: skill.topics.map((topic) => ({
+		id: String(topic.id),
+		label: topic.name,
+	})),
+}))
+
 
 export const focusSlices: FocusSlice[] = [
     { label: "AI & ML", value: "40%", percent: 40, color: "#FF1F5A" },

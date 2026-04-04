@@ -8,7 +8,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Linear Algebra Foundations",
 		finishedOn: "Nov 12, 2024",
 		asset: { label: "Notes", url: "#" },
-		postIds: [1, 2, 3],
+		postId: 1,
 		userEntry:
 			"Worked through vectors, matrix multiplication, and eigenvalues. Finally connected the math back to how models represent data.",
 	},
@@ -19,7 +19,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Probability & Statistics",
 		finishedOn: "Nov 15, 2024",
 		asset: { label: "Cheatsheet", url: "#" },
-		postIds: [4, 5, 6],
+		postId: 4,
 		userEntry:
 			"Reviewed Bayes theorem, distributions, and expected value. Focused on building intuition instead of memorizing formulas.",
 	},
@@ -30,7 +30,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Data Preprocessing",
 		finishedOn: "Nov 18, 2024",
 		asset: null,
-		postIds: [7, 8, 9],
+		postId: 7,
 		userEntry:
 			"Spent time on missing value handling, scaling, and encoding. This felt like the real-world side of ML work.",
 	},
@@ -41,7 +41,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Linear Regression",
 		finishedOn: "Nov 22, 2024",
 		asset: { label: "Notebook", url: "#" },
-		postIds: [10, 11, 12],
+		postId: 10,
 		userEntry:
 			"Trained a simple regression model and compared gradient descent with the closed-form solution to understand both paths.",
 	},
@@ -52,7 +52,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Logistic Regression",
 		finishedOn: "Nov 25, 2024",
 		asset: null,
-		postIds: [13, 14, 15],
+		postId: 13,
 		userEntry:
 			"Mapped the transition from regression to classification and spent extra time understanding the sigmoid decision boundary.",
 	},
@@ -63,7 +63,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Decision Trees",
 		finishedOn: "Nov 29, 2024",
 		asset: { label: "Article", url: "#" },
-		postIds: [16, 17, 18],
+		postId: 16,
 		userEntry:
 			"Learned how entropy, Gini impurity, and pruning shape tree behavior and why interpretability matters so much here.",
 	},
@@ -74,7 +74,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Random Forests & Ensembles",
 		finishedOn: "Dec 2, 2024",
 		asset: null,
-		postIds: [19, 20, 21],
+		postId: 19,
 		userEntry:
 			"Compared bagging and feature subsampling and saw how ensembles smooth out single-model variance.",
 	},
@@ -85,7 +85,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Feature Engineering",
 		finishedOn: "Dec 5, 2024",
 		asset: { label: "Notes", url: "#" },
-		postIds: [22, 23, 24],
+		postId: 22,
 		userEntry:
 			"Created interaction features and reviewed why better features often outperform more complicated models.",
 	},
@@ -96,7 +96,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Model Evaluation & Metrics",
 		finishedOn: null,
 		asset: null,
-		postIds: [],
+		postId: null,
 		userEntry: "",
 	},
 	{
@@ -106,7 +106,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Gradient Descent Deep Dive",
 		finishedOn: null,
 		asset: null,
-		postIds: [],
+		postId: null,
 		userEntry: "",
 	},
 	{
@@ -116,7 +116,7 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Neural Network Basics",
 		finishedOn: null,
 		asset: null,
-		postIds: [],
+		postId: null,
 		userEntry: "",
 	},
 	{
@@ -126,7 +126,136 @@ export const machineLearningTopics: SkillTopic[] = [
 		name: "Model Deployment & MLOps",
 		finishedOn: null,
 		asset: null,
-		postIds: [],
+		postId: null,
+		userEntry: "",
+	},
+]
+
+export const typeScriptTopics: SkillTopic[] = [
+	{
+		id: 1,
+		skillId: 2,
+		done: true,
+		name: "Type System Basics",
+		finishedOn: "Oct 10, 2024",
+		asset: { label: "Notes", url: "#" },
+		postId: null,
+		userEntry: "Reviewed unions, intersections, and narrowing for safer APIs.",
+	},
+	{
+		id: 2,
+		skillId: 2,
+		done: true,
+		name: "Generics",
+		finishedOn: "Oct 14, 2024",
+		asset: null,
+		postId: null,
+		userEntry: "Practiced constrained generics and reusable utility helpers.",
+	},
+	{
+		id: 3,
+		skillId: 2,
+		done: false,
+		name: "Utility Types",
+		finishedOn: null,
+		asset: null,
+		postId: null,
+		userEntry: "",
+	},
+	{
+		id: 4,
+		skillId: 2,
+		done: false,
+		name: "Advanced Patterns",
+		finishedOn: null,
+		asset: null,
+		postId: null,
+		userEntry: "",
+	},
+]
+
+export const nextJsTopics: SkillTopic[] = [
+	{
+		id: 1,
+		skillId: 3,
+		done: true,
+		name: "App Router",
+		finishedOn: "Sep 5, 2024",
+		asset: { label: "Guide", url: "#" },
+		postId: null,
+		userEntry: "Mapped nested layouts, route groups, and loading states.",
+	},
+	{
+		id: 2,
+		skillId: 3,
+		done: true,
+		name: "Server Components",
+		finishedOn: "Sep 9, 2024",
+		asset: null,
+		postId: null,
+		userEntry: "Learned data-fetching boundaries between server and client components.",
+	},
+	{
+		id: 3,
+		skillId: 3,
+		done: true,
+		name: "API & Actions",
+		finishedOn: "Sep 14, 2024",
+		asset: null,
+		postId: null,
+		userEntry: "Compared route handlers and server actions in CRUD workflows.",
+	},
+	{
+		id: 4,
+		skillId: 3,
+		done: true,
+		name: "Deployment",
+		finishedOn: "Sep 20, 2024",
+		asset: null,
+		postId: null,
+		userEntry: "Prepared production config, env vars, and caching checks.",
+	},
+]
+
+export const aiTopics: SkillTopic[] = [
+	{
+		id: 1,
+		skillId: 4,
+		done: true,
+		name: "LLM Fundamentals",
+		finishedOn: "Dec 4, 2024",
+		asset: { label: "Notes", url: "#" },
+		postId: null,
+		userEntry: "Covered tokenization, attention, and transformer blocks.",
+	},
+	{
+		id: 2,
+		skillId: 4,
+		done: true,
+		name: "Embeddings",
+		finishedOn: "Dec 8, 2024",
+		asset: null,
+		postId: null,
+		userEntry: "Implemented semantic retrieval with vector similarity.",
+	},
+	{
+		id: 3,
+		skillId: 4,
+		done: false,
+		name: "RAG Pipelines",
+		finishedOn: null,
+		asset: null,
+		postId: null,
+		userEntry: "",
+	},
+	{
+		id: 4,
+		skillId: 4,
+		done: false,
+		name: "Evaluation & Deployment",
+		finishedOn: null,
+		asset: null,
+		postId: null,
 		userEntry: "",
 	},
 ]
@@ -397,3 +526,9 @@ export const posts: Post[] = [
 		userEntry: machineLearningTopics[7].userEntry,
 	},
 ]
+
+posts.forEach((post) => {
+	if (!post.post) {
+		post.post = `Learning update on ${post.topicName}:\n\n${post.userEntry ?? ""}\n\nTone: ${post.tone} · Format: ${post.format}\n#${post.skillName.replace(/\s+/g, "")}`
+	}
+})
