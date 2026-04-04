@@ -119,10 +119,48 @@ types/
 
 ```
 
+---
+
+## 🪟 Popup Flow (Vibe Coding Notes)
+
+### 1.) Implementation Summary (for interviewers)
+
+- Built a reusable popup architecture with a shared `useDialogOverlay` hook for open/close, escape handling, and body scroll lock.
+- Applied feature-level popup orchestration hooks:
+  - Add Entry flow (`useAddEntryDialog`)
+  - Add Skill flow (`useAddSkillDialog`)
+  - Skill Post dialog flow (`useSkillPostDialog`)
+- Standardized popup composition pattern:
+  - Dialog shell component for layout/visual treatment
+  - Feature hook for state + behavior
+  - Form/content component receiving a single `dialog` object
+- Refined business flow correctness:
+  - Topic checkbox opens entry popup only.
+  - Data mutation (create post, create entry, mark topic complete) happens on submit action.
+- Reduced page-level complexity by moving popup state and behavior out of parent pages/components.
+- Improved maintainability by separating:
+  - generic primitives (`hooks/*`)
+  - feature logic (`features/*`)
+  - UI rendering (`components/*`)
+
 🧑‍💻 Author
 
 Built by Vaishali
 Frontend Engineer • Building in public 🚀
 
 <!-- Branches -->
-<!-- main - static pages with pages - dashboard and skill detail - no popups -->
+<!-- main - static pages with pages and popups - static design  -->
+<!-- data-formatting has zustand and its store -->
+<!-- design-data-mere - merged both branches above -->
+
+<!-- upload image in user entry popup -->
+<!-- one column for view entry in skill table -->
+
+<!-- Popup reminder -->
+<!-- Keep popup UI in components/popups, logic in features/* -->
+<!-- Use one shared dialog primitive: useDialogOverlay -->
+<!-- Popup trigger should not mutate business data unless explicitly required -->
+<!-- Keep generic hooks in hooks/* and feature hooks in features/* -->
+<!-- Avoid duplicate logic paths (old hook stays only as temporary shim, not active usage) -->
+<!-- Keep naming consistent: topics, entries, postId, skillId -->
+<!-- Do not change design while refactoring architecture -->
