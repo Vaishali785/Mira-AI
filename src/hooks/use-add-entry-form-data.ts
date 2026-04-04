@@ -105,7 +105,6 @@ export function useAddEntryFormData() {
 		isSkillTopicLocked,
 		lockedSkillLabel,
 		lockedTopicLabel,
-		// skills: entrySkills,
 		topicOptions,
 		tones,
 		format,
