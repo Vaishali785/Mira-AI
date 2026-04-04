@@ -1,24 +1,9 @@
-import { AddSkillStep, TopicMode } from "@/hooks/use-add-skill-stepper"
-import { SkillData } from "@/hooks/use-skill-data"
+import { useAddSkillDialog } from "@/features/skills/use-add-skill-dialog"
 import { createSkillAction } from "@/server/actions"
 import { ArrowLeft, ArrowRight, BookOpen, Layers, List, Plus, X } from "lucide-react"
 
 type AddSkillFormProps = {
-	step: AddSkillStep
-	topicMode: TopicMode
-	aiLoading: boolean
-	canContinue: boolean
-	skillData: SkillData
-	topicInput: string
-	onCancel: () => void
-	onSubmitted: () => void
-	onGoBack: () => void
-	onGoNext: () => void
-	onChooseTopicMode: (mode: "manual" | "ai") => void
-	onSkillNameChange: (value: string) => void
-	onTopicInputChange: (value: string) => void
-	onAddTopic: () => void
-	onRemoveTopic: (topicIndex: number) => void
+	dialog: ReturnType<typeof useAddSkillDialog>
 }
 
 function SkillNameTag({ value }: { value: string }) {
@@ -30,23 +15,25 @@ function SkillNameTag({ value }: { value: string }) {
 	)
 }
 
-export function AddSkillForm({
-	step,
-	topicMode,
-	aiLoading,
-	canContinue,
-	skillData,
-	topicInput,
-	onCancel,
-	onSubmitted,
-	onGoBack,
-	onGoNext,
-	onChooseTopicMode,
-	onSkillNameChange,
-	onTopicInputChange,
-	onAddTopic,
-	onRemoveTopic,
-}: AddSkillFormProps) {
+export function AddSkillForm({ dialog }: AddSkillFormProps) {
+	const {
+		step,
+		topicMode,
+		aiLoading,
+		canContinue,
+		skillData,
+		topicInput,
+		close,
+		onSubmitted,
+		onGoBack,
+		onGoNext,
+		onChooseTopicMode,
+		onSkillNameChange,
+		onTopicInputChange,
+		onAddTopic,
+		onRemoveTopic,
+	} = dialog
+
 	const isManualStep = step === 3 && topicMode === "manual"
 	const isAiStep = step === 3 && topicMode === "ai"
 	const nextLabel = step === 3 ? "Save Skill" : "Continue"
@@ -197,7 +184,7 @@ export function AddSkillForm({
 				<div className="flex items-center gap-2">
 					<button
 						type="button"
-						onClick={onCancel}
+						onClick={close}
 						className="cursor-pointer rounded-[6px] border border-(--bdr2) bg-transparent px-[11px] py-[5px] text-[11px] font-semibold text-(--tx2) transition-colors hover:bg-(--card2) hover:text-(--tx)"
 					>
 						Cancel
