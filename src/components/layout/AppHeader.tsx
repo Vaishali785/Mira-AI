@@ -1,9 +1,9 @@
 "use client"
 
 import { AddSkillDialog } from "@/components/popups/AddSkillDialog"
+import { useAddSkillDialog } from "@/features/skills/use-add-skill-dialog"
 import { DashboardTab } from "@/types/app-types"
 import Link from "next/link"
-import { useState } from "react"
 import AddSkillBtn from "../buttons/AddSkillBtn"
 import { NavTabs } from "./NavTabs"
 
@@ -15,7 +15,7 @@ type AppHeaderProps = {
 }
 
 export function AppHeader({ isLight, onToggleTheme, activeTab, onTabChange }: AppHeaderProps) {
-	const [isAddSkillOpen, setIsAddSkillOpen] = useState(false)
+	const addSkillDialog = useAddSkillDialog()
 
 	return (
 		<>
@@ -31,7 +31,7 @@ export function AppHeader({ isLight, onToggleTheme, activeTab, onTabChange }: Ap
 					<NavTabs activeTab={activeTab} onTabChange={onTabChange} />
 				</div>
 				<div className="ml-auto flex items-center gap-2 sm:order-3">
-					<AddSkillBtn onClick={() => setIsAddSkillOpen(true)} />
+					<AddSkillBtn onClick={addSkillDialog.open} />
 					<button
 						type="button"
 						aria-label="Toggle theme"
@@ -49,7 +49,7 @@ export function AppHeader({ isLight, onToggleTheme, activeTab, onTabChange }: Ap
 					</button>
 				</div>
 			</header>
-			<AddSkillDialog isOpen={isAddSkillOpen} onClose={() => setIsAddSkillOpen(false)} />
+			<AddSkillDialog dialog={addSkillDialog} />
 		</>
 	)
 }
