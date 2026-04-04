@@ -31,7 +31,7 @@ export function SkillPostDialog({ topic, onClose }: SkillPostDialogProps) {
 					</div>
 					<button
 						type="button"
-						className="grid h-7 w-7 place-items-center rounded-[8px] border border-(--bdr) bg-(--card2) text-(--tx3) transition-colors hover:bg-(--bdr2) hover:text-(--tx)"
+						className="grid h-7 w-7 place-items-center rounded-[8px] border border-(--bdr) bg-(--card2) text-(--tx3) transition-colors hover:bg-(--bdr2) hover:text-(--tx) hover:cursor-pointer"
 						onClick={onClose}
 						aria-label="Close popup"
 					>
@@ -59,7 +59,7 @@ export function SkillPostDialog({ topic, onClose }: SkillPostDialogProps) {
 							className={`inline-flex items-center gap-[5px] rounded-[7px] border px-3 py-[5px] text-[11px] font-semibold transition-colors ${
 								copied
 									? "border-(--rose-dim) bg-(--rose-dim) text-(--rose)"
-									: "border-(--bdr2) bg-(--card2) text-(--tx2) hover:text-(--tx)"
+									: "border-(--bdr2) bg-(--card2) text-(--tx2) hover:text-(--tx) hover:cursor-pointer"
 							}`}
 						>
 							{copied ? (

@@ -71,7 +71,7 @@ export function AddEntryForm({ dialog }: AddEntryFormProps) {
 							<input
 								value={lockedSkillLabel}
 								readOnly
-								className="w-full cursor-not-allowed rounded-[8px] border border-(--bdr2) bg-(--card2) px-3 py-[9px] text-[13px] text-(--tx2) outline-none"
+								className="w-full cursor-auto rounded-[8px] border border-(--bdr2) bg-(--card2) px-3 py-[9px] text-[13px] text-(--tx2) outline-none"
 							/>
 						) : (
 							<select
@@ -94,7 +94,7 @@ export function AddEntryForm({ dialog }: AddEntryFormProps) {
 							<input
 								value={lockedTopicLabel}
 								readOnly
-								className="w-full cursor-not-allowed rounded-[8px] border border-(--bdr2) bg-(--card2) px-3 py-[9px] text-[13px] text-(--tx2) outline-none"
+								className="w-full cursor-auto rounded-[8px] border border-(--bdr2) bg-(--card2) px-3 py-[9px] text-[13px] text-(--tx2) outline-none"
 							/>
 						) : (
 							<select
