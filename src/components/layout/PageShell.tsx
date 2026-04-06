@@ -20,11 +20,11 @@ export function PageShell({
 
 	return (
 		<main
-			className="mira-page min-h-screen w-full px-3 pb-3 pt-0 text-[var(--tx)] transition-[background,color] duration-300 sm:px-5 sm:pb-5 sm:pt-0"
+			className="mira-page min-h-screen w-full px-3 pb-3 pt-0 text-(--tx) transition-[background,color] duration-300 sm:px-5 sm:pb-5 sm:pt-0"
 			data-light={isLight ? "true" : undefined}
 			style={theme}
 		>
-			<div className="mx-auto min-w-0 w-full max-w-[1480px] rounded-[14px] text-[var(--tx)] transition-[background,color] duration-300">
+			<div className="mx-auto min-w-0 w-full max-w-[1480px] rounded-[14px] text-(--tx) transition-[background,color] duration-300">
 				<div
 					className="sticky top-0 z-30 -mx-3 px-9 transition-all duration-300 sm:-mx-5 max-sm:px-5"
 					style={

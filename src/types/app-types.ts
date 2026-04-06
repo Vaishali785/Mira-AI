@@ -11,17 +11,53 @@ export type Kpi = {
     icon: KpiIcon;
 };
 
-export type SkillLesson = {
+export type SkillTopicAsset = {
     label: string;
+    url: string;
+};
+
+export type SkillTopicPreview = {
+    id: number;
+    name: string;
     done: boolean;
 };
 
-export type SkillCard = {
+export type PostTone = "Educational" | "Casual" | "Professional" | "Storytelling" | "Reflective" | "Bold";
+
+export type PostFormat = "Single Tweet" | "Thread" | "Quick Insight" | "Weekly Summary" | "X Post" | "X Thread" | "LinkedIn Post";
+
+export type Post = {
+    id: number;
+    skillName: string;
+    skillId: number;
+    topicName: string;
+    topicId: number;
+    createdOn: string;
+    tone: PostTone;
+    format: PostFormat;
+    post?: string;
+    userEntry?: string;
+};
+
+export type SkillTopic = {
+    id: number;
+    skillId: number;
+    done: boolean;
+    name: string;
+    finishedOn: string | null;
+    asset: SkillTopicAsset | null;
+    postId: number | null;
+    userEntry?: string;
+};
+
+export type Skill = {
+    skillId: number;
+    createdOn: string;
     name: string;
     status: "Active" | "Done" | "Paused";
     progress: number;
     gradient: string;
-    lessons: SkillLesson[];
+    topics: SkillTopic[];
 };
 
 export type Entry = {
@@ -44,3 +80,9 @@ export type HeatmapCell = {
     title: string;
     background: string;
 };
+
+export type EntrySkill = {
+	id: string
+	label: string
+	topics: Array<{ id: string; label: string }>
+}

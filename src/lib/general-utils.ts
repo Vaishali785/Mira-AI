@@ -19,3 +19,10 @@ export const copyTextToClipboard = async (text: string): Promise<boolean> => {
 		return false
 	}
 }
+
+export const buildLearningPost = (topicName: string, userEntry: string, tone: string, postStyle: string, skillName: string) => {
+	const base = userEntry.trim()
+	if (!base) return ""
+
+	return [`Learning update on ${topicName}:`, "", base, "", `Tone: ${tone} · Format: ${postStyle}`, `#${skillName.replace(/\s+/g, "")}`].join("\n")
+}

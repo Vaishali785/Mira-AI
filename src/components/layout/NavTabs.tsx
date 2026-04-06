@@ -17,13 +17,13 @@ export function NavTabs({ activeTab, onTabChange }: NavTabsProps) {
 						onClick={() => onTabChange(tab)}
 						className={`relative cursor-pointer px-[2px] py-[8px] text-[12px] font-medium transition-colors duration-200 ${
 							activeTab === tab
-								? "text-[var(--tx)]"
-								: "text-[var(--tx3)] hover:text-[var(--tx2)]"
+								? "text-(--tx)"
+								: "text-(--tx3) hover:text-(--tx2)"
 						}`}
 					>
 						{tab}
 						{activeTab === tab ? (
-							<span className="absolute bottom-0 left-0 right-0 h-[2px] rounded-t-[2px] bg-[var(--rose)]" />
+							<span className="absolute bottom-0 left-0 right-0 h-[2px] rounded-t-[2px] bg-(--rose)" />
 						) : null}
 					</button>
 				))}

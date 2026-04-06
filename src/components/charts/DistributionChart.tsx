@@ -20,7 +20,7 @@ export function DistributionChart() {
           {focusSlices.map((slice) => (
             <div key={slice.label} className="mb-[5px] flex items-center gap-[5px] text-[10px]">
               <span className="h-[6px] w-[6px] shrink-0 rounded-full" style={{ background: slice.color }} />
-              <span className="flex-1 text-[var(--tx2)]">{slice.label}</span>
+              <span className="flex-1 text-(--tx2)">{slice.label}</span>
               <span className="font-[ui-monospace,SFMono-Regular,Menlo,monospace] text-[11px] font-bold">{slice.value}</span>
             </div>
           ))}

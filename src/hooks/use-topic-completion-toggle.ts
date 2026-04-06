@@ -1,47 +1,42 @@
+import { useSkills } from "@/store/skillsStore"
+
 type LockedContextParams = {
-    skillLabel: string;
-    topicLabel: string;
-    onSubmit?: () => void;
-};
+	skillLabel: string
+	topicLabel: string
+}
 
-type TopicCompletionContext = {
-    exists: boolean;
-    done: boolean;
-    skillLabel: string;
-    topicLabel: string;
-};
+type TopicToggleTarget = {
+	skillId: number
+	topicId: number
+}
 
-type UseTopicCompletionToggleParams<TId> = {
-    getContext: (target: TId) => TopicCompletionContext;
-    onMarkIncomplete: (target: TId) => void;
-    onMarkComplete: (target: TId) => void;
-    openWithLockedContext: (params: LockedContextParams) => void;
-};
+type UseTopicCompletionToggleParams = {
+	openWithLockedContext: (params: LockedContextParams) => void
+}
 
-export function useTopicCompletionToggle<TId>({
-    getContext,
-    onMarkIncomplete,
-    onMarkComplete,
-    openWithLockedContext
-}: UseTopicCompletionToggleParams<TId>) {
-    const toggleTopic = (target: TId) => {
-        const context = getContext(target);
+export function useTopicCompletionToggle({ openWithLockedContext }: UseTopicCompletionToggleParams) {
+	const skills = useSkills()
 
-        if (!context.exists) {
-            return;
-        }
+	const getContext = (target: TopicToggleTarget) => {
+		const selectedSkill = skills.find((skill) => skill.skillId === target.skillId)
+		const selectedTopic = selectedSkill?.topics.find((topic) => topic.id === target.topicId)
 
-        if (context.done) {
-            onMarkIncomplete(target);
-            return;
-        }
+		return {
+			exists: Boolean(selectedSkill && selectedTopic),
+			skillLabel: selectedSkill?.name ?? "",
+			topicLabel: selectedTopic?.name ?? "",
+		}
+	}
 
-        openWithLockedContext({
-            skillLabel: context.skillLabel,
-            topicLabel: context.topicLabel,
-            onSubmit: () => onMarkComplete(target)
-        });
-    };
+	const toggleTopic = (target: TopicToggleTarget) => {
+		const context = getContext(target)
+		if (!context.exists) return
 
-    return { toggleTopic };
+		openWithLockedContext({
+			skillLabel: context.skillLabel,
+			topicLabel: context.topicLabel,
+		})
+	}
+
+	return { toggleTopic }
 }

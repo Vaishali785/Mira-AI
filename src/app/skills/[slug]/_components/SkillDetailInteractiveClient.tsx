@@ -1,63 +1,40 @@
-"use client";
+"use client"
 
-import { AddEntryDialog } from "@/components/popups/AddEntryDialog";
-import { SkillDetailHeader } from "./SkillDetailHeader";
-import { SkillPostDialog } from "./SkillPostDialog";
-import { SkillTopicsTable } from "./SkillTopicsTable";
-import { machineLearningTopics } from "@/data/skill-detail-data";
-import { useAddEntryDialog } from "@/hooks/use-add-entry-dialog";
-import { useDialogOverlay } from "@/hooks/use-dialog-overlay";
-import { useTopicCompletionToggle } from "@/hooks/use-topic-completion-toggle";
-import { formatShortDate } from "@/lib/general-utils";
-import { useState } from "react";
+import { AddEntryDialog } from "@/components/popups/AddEntryDialog"
+import { useAddEntryDialog } from "@/features/entries/use-add-entry-dialog"
+import { useSkillPostDialog } from "@/features/skills/use-skill-post-dialog"
+import { useSkills } from "@/store/skillsStore"
+import { SkillDetailHeader } from "./SkillDetailHeader"
+import { SkillPostDialog } from "./SkillPostDialog"
+import { SkillTopicsTable } from "./SkillTopicsTable"
 
-export function SkillDetailInteractiveClient() {
-    const addEntryDialog = useAddEntryDialog();
-    const [topics, setTopics] = useState(machineLearningTopics);
-    const [selectedTopicId, setSelectedTopicId] = useState<number | null>(null);
-    const postDialog = useDialogOverlay({ onClose: () => setSelectedTopicId(null) });
-    const completedCount = topics.filter((topic) => topic.done).length;
-    const progressPct = Math.round((completedCount / topics.length) * 100);
-    const selectedTopic = topics.find((topic) => topic.id === selectedTopicId) ?? null;
+type Props = {
+	skillId: string
+}
+export function SkillDetailInteractiveClient({ skillId }: Props) {
+	const skills = useSkills()
+	const addEntryDialog = useAddEntryDialog() // to open add entry popup
 
-    const { toggleTopic } = useTopicCompletionToggle<number>({
-        getContext: (topicId) => {
-            const topic = topics.find((item) => item.id === topicId);
-            return {
-                exists: Boolean(topic),
-                done: topic?.done ?? false,
-                skillLabel: "Machine Learning",
-                topicLabel: topic?.name ?? ""
-            };
-        },
-        onMarkIncomplete: (topicId) => {
-            setTopics((current) =>
-                current.map((item) => (item.id === topicId ? { ...item, done: false, date: null } : item))
-            );
-        },
-        onMarkComplete: (topicId) => {
-            setTopics((current) =>
-                current.map((item) =>
-                    item.id === topicId ? { ...item, done: true, date: item.date ?? formatShortDate() } : item
-                )
-            );
-        },
-        openWithLockedContext: addEntryDialog.openWithLockedContext
-    });
+	const pageSkill = skills.find((skill) => skill.skillId === Number(skillId))
+	const topics = pageSkill?.topics ?? []
+	const postDialog = useSkillPostDialog(topics)
 
-    const openTopicPost = (topicId: number) => {
-        setSelectedTopicId(topicId);
-        postDialog.open();
-    };
+	const completedCount = topics.filter((topic) => topic.done).length
+	const progressPct = Math.round((completedCount / topics.length) * 100)
 
-    return (
-        <>
-            <SkillDetailHeader completedCount={completedCount} progressPct={progressPct} />
-            <div className="px-0 pb-16 sm:px-5">
-                <SkillTopicsTable topics={topics} onOpenPost={openTopicPost} onToggleTopic={toggleTopic} />
-            </div>
-            <AddEntryDialog dialog={addEntryDialog} />
-            <SkillPostDialog topic={postDialog.isOpen ? selectedTopic : null} onClose={postDialog.close} />
-        </>
-    );
+	return (
+		<>
+			<SkillDetailHeader completedCount={completedCount} progressPct={progressPct} />
+			<div className="px-0 pb-16 sm:px-5">
+				<SkillTopicsTable
+					topics={topics}
+					skillId={Number(skillId)}
+					onOpenPost={postDialog.openTopicPost}
+					onOpenAddEntryWithContext={addEntryDialog.openWithLockedContext}
+				/>
+			</div>
+			<AddEntryDialog dialog={addEntryDialog} />
+			<SkillPostDialog topic={postDialog.topic} onClose={postDialog.close} />
+		</>
+	)
 }
