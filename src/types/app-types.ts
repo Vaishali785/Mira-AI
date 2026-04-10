@@ -56,7 +56,7 @@ export type Skill = {
     name: string;
     status: "Active" | "Done" | "Paused";
     progress: number;
-    gradient: string;
+    // gradient: string;
     topics: SkillTopic[];
 };
 

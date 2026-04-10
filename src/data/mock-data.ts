@@ -17,7 +17,7 @@ export const skills: Skill[] = [
         name: "Machine Learning",
         status: "Active",
         progress: 65,
-        gradient: "linear-gradient(90deg,var(--rose),var(--rose))",
+        // gradient: "linear-gradient(90deg,var(--rose),#FF7BAA)",
         topics: machineLearningTopics
     },
     {
@@ -26,7 +26,7 @@ export const skills: Skill[] = [
         name: "TypeScript",
         status: "Active",
         progress: 80,
-        gradient: "linear-gradient(90deg,var(--rose),#FF7BAA)",
+        // gradient: "linear-gradient(90deg,var(--rose),#FF7BAA)",
         topics: typeScriptTopics
     },
     {
@@ -35,7 +35,7 @@ export const skills: Skill[] = [
         name: "Next.js",
         status: "Done",
         progress: 92,
-        gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
+        // gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
         topics: nextJsTopics
     },
     {
@@ -44,7 +44,7 @@ export const skills: Skill[] = [
         name: "AI",
         status: "Active",
         progress: 50,
-        gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
+        // gradient: "linear-gradient(90deg,var(--rose),#FFB3CC)",
         topics: aiTopics
     }
 ];

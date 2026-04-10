@@ -264,6 +264,13 @@ input {
 	background: var(--rose-dim);
 }
 
+
+.progress-gradient{
+    background: linear-gradient(90deg,#FF7BAA, var(--rose))
+}
+
+
+
 @media (max-width: 1279px) {
 	.mira-page {
 		padding-bottom: 24px;

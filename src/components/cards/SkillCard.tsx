@@ -31,7 +31,7 @@ export function SkillCard({ skill, onToggleTopic }: SkillCardProps) {
 			</div>
 
 			<div className="mb-4 h-[4px] overflow-hidden rounded-full bg-(--card2)">
-				<div className="h-full rounded-full" style={{ width: `${skill.progress}%`, background: skill.gradient }} />
+				<div className="h-full rounded-full progress-gradient" style={{ width: `${skill.progress}%` }} />
 			</div>
 
 			<div className="space-y-[8px]">
